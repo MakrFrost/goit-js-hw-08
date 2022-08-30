@@ -1,5 +1,6 @@
 // Add imports above this line
 import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import { galleryItems } from './gallery-items';
 
 const galleryAlbum = document.querySelector('.gallery');
@@ -16,19 +17,15 @@ function addItemToGallery({ preview, original, description }) {
 
 // Делаем один бойльшой файл разметки
 let addNewImage = galleryItems.map(addItemToGallery).join('');
-//* console.log(addNewImage);
 
 // Вставляет в разметку разметку картинки
 galleryAlbum.insertAdjacentHTML('afterbegin', addNewImage);
-//* console.log(galleryAlbum);
 
 // Открывает модальное окно с картинкой по клику (большой, оригинальной)
 function openGalleryItem(event) {
   event.preventDefault();
   // Достукиваемся до дата-атрибута по клику
   const imageSrc = event.target.dataset.source;
-  //* console.log(imageSrc);
-  //* console.log(event.target);
 }
 
 let gallery = new SimpleLightbox('.gallery a');
