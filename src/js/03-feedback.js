@@ -11,13 +11,14 @@ const formStorage = {};
 form.addEventListener('submit', formSubmit);
 form.addEventListener('input', throttle(nameInput, 500));
 textarea.addEventListener('input', throttle(textAreaInput, 500));
+email.addEventListener('input', throttle(textAreaInput, 500));
 
 function nameInput(event) {
   formStorage[event.target.name] = event.target.value;
 
   console.log(formStorage);
 
-  localStorage.setItem('formStorage', JSON.stringify(formStorage));
+  localStorage.setItem(STG_KEY, JSON.stringify(formStorage));
 }
 
 function formSubmit(event) {
@@ -35,10 +36,11 @@ function textAreaInput(event) {
 // function messageInput(event) {}
 
 function onRefreshPage() {
-  const saveMessage = JSON.parse(localStorage.getItem(formStorage));
-  if (saveMessage) {
-    email.value = saveMessage.email;
-    textarea.value = saveMessage.message;
+  const localSaveMessage = JSON.parse(localStorage.getItem(STG_KEY));
+  if (localSaveMessage) {
+    email.value = localSaveMessage.email;
+    textarea.value = localSaveMessage.message;
   }
 }
+
 onRefreshPage();
