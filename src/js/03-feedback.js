@@ -23,8 +23,8 @@ function nameInput(event) {
 
 function formSubmit(event) {
   event.preventDefault();
-  console.log('Вы отправили форму вашему менеджеру!');
   event.target.reset();
+  console.log(formStorage);
   localStorage.removeItem(STG_KEY);
 }
 
