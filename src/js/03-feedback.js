@@ -35,17 +35,10 @@ function textAreaInput(event) {
 // function messageInput(event) {}
 
 function onRefreshPage() {
-  const saveMessage = localStorage.getItem(
-    STG_KEY,
-    formStorage.email,
-    formStorage.message
-  );
+  const saveMessage = JSON.parse(localStorage.getItem(formStorage));
   if (saveMessage) {
-    email.value = formStorage.email;
-    textarea.value = formStorage.message;
-    object = JSON.parse(
-      localStorage.getItem(formStorage.email, formStorage.message)
-    );
+    email.value = saveMessage.email;
+    textarea.value = saveMessage.message;
   }
 }
 onRefreshPage();
