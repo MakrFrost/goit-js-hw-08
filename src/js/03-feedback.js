@@ -1,7 +1,4 @@
-function feedback() {
-  console.log('Это фидбек клайентса!');
-}
-feedback();
+const throttle = require('lodash.throttle');
 
 //!
 const form = document.querySelector('.feedback-form');
@@ -10,9 +7,7 @@ const textareas = document.querySelector('.feedback-form textarea');
 const STG_KEY = 'feedback-form-state';
 
 form.addEventListener('submit', formSubmit);
-textareas.addEventListener('input', textAreaInput);
-// email.addEventListener('input', emailInput);
-// message.addEventListener('input', messageInput);
+textareas.addEventListener('input', throttle(textAreaInput, 500));
 
 function formSubmit(event) {
   event.preventDefault();
