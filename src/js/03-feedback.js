@@ -33,8 +33,6 @@ function textAreaInput(event) {
   localStorage.setItem(STG_KEY, messageValue);
 }
 
-// function messageInput(event) {}
-
 function onRefreshPage() {
   const localSaveMessage = JSON.parse(localStorage.getItem(STG_KEY));
   if (localSaveMessage) {
