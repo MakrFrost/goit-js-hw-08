@@ -29,3 +29,11 @@ function messageInput(event) {
   // console.log(text);
   // localStorage.setItem('feedback-form-state', text);
 }
+
+function onRefreshPage() {
+  const saveMessage = localStorage.getItem('feedback-form-state');
+  if (saveMessage) {
+    console.log(saveMessage);
+  }
+}
+onRefreshPage();
