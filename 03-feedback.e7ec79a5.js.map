@@ -1,1 +1,0 @@
-{"mappings":"AACEA,QAAQC,IAAI","sources":["src/js/03-feedback.js"],"sourcesContent":["function feedback() {\n  console.log('Это фидбек клайентса!');\n}\nfeedback();\n"],"names":["console","log"],"version":3,"file":"03-feedback.e7ec79a5.js.map"}
