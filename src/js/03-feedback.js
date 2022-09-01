@@ -5,9 +5,16 @@ const form = document.querySelector('.feedback-form');
 const textareas = document.querySelector('.feedback-form textarea');
 
 const STG_KEY = 'feedback-form-state';
+const formStorage = {};
 
 form.addEventListener('submit', formSubmit);
+form.addEventListener('input', throttle(nameInput, 500));
 textareas.addEventListener('input', throttle(textAreaInput, 500));
+
+function nameInput(event) {
+  formStorage[event.target.name] = event.target.value;
+  console.log(formStorage);
+}
 
 function formSubmit(event) {
   event.preventDefault();
@@ -18,16 +25,16 @@ function formSubmit(event) {
 
 function textAreaInput(event) {
   const messageValue = event.target.value;
-  console.log(messageValue);
-  localStorage.setItem(STG_KEY, messageValue);
+  localStorage.setItem(STG_KEY, formStorage);
 }
 
-function messageInput(event) {}
+// function messageInput(event) {}
 
 function onRefreshPage() {
   const saveMessage = localStorage.getItem(STG_KEY);
   if (saveMessage) {
-    console.log(saveMessage);
+    console.log(formStorage.email);
+    console.log(formStorage.message);
     textareas.value = saveMessage;
   }
 }
