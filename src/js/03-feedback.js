@@ -1,6 +1,5 @@
 const throttle = require('lodash.throttle');
 
-//!
 const form = document.querySelector('.feedback-form');
 const textarea = document.querySelector('.feedback-form textarea');
 const email = document.querySelector('.feedback-form input');
@@ -8,12 +7,12 @@ const email = document.querySelector('.feedback-form input');
 const STG_KEY = 'formStorage';
 const formStorage = {};
 
-form.addEventListener('submit', formSubmit);
-form.addEventListener('input', throttle(nameInput, 500));
-textarea.addEventListener('input', throttle(textAreaInput, 500));
-email.addEventListener('input', throttle(textAreaInput, 500));
+form.addEventListener('submit', onFormSubmit);
+form.addEventListener('input', throttle(onNameInput, 500));
+textarea.addEventListener('input', throttle(onTextAreaInput, 500));
+email.addEventListener('input', throttle(onTextAreaInput, 500));
 
-function nameInput(event) {
+function onNameInput(event) {
   formStorage[event.target.name] = event.target.value;
 
   console.log(formStorage);
@@ -21,14 +20,14 @@ function nameInput(event) {
   localStorage.setItem(STG_KEY, JSON.stringify(formStorage));
 }
 
-function formSubmit(event) {
+function onFormSubmit(event) {
   event.preventDefault();
   event.target.reset();
   console.log(formStorage);
   localStorage.removeItem(STG_KEY);
 }
 
-function textAreaInput(event) {
+function onTextAreaInput(event) {
   const messageValue = event.target.value;
   localStorage.setItem(STG_KEY, messageValue);
 }
