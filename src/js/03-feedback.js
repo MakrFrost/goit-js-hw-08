@@ -22,8 +22,8 @@ function onNameInput(event) {
 
 function onFormSubmit(event) {
   event.preventDefault();
-  event.target.reset();
   console.log(formStorage);
+  event.target.reset();
   localStorage.removeItem(STG_KEY);
 }
 
@@ -34,8 +34,11 @@ function onTextAreaInput(event) {
 
 function onRefreshPage() {
   const localSaveMessage = JSON.parse(localStorage.getItem(STG_KEY));
-  if (localSaveMessage) {
+
+  if (localSaveMessage?.email) {
     email.value = localSaveMessage.email;
+  }
+  if (localSaveMessage?.message) {
     textarea.value = localSaveMessage.message;
   }
 }
