@@ -36,16 +36,16 @@ function onTextAreaInput(event) {
 }
 
 function onRefreshPage() {
-  const localSaveMessage = JSON.parse(localStorage.getItem(STG_KEY));
+  const saveMessage = JSON.parse(localStorage.getItem(STG_KEY));
 
-  if (localSaveMessage?.email) {
-    email.value = localSaveMessage.email;
+  if (saveMessage?.email) {
+    email.value = saveMessage.email;
   }
-  if (localSaveMessage?.message) {
-    textarea.value = localSaveMessage.message;
+  if (saveMessage?.message) {
+    textarea.value = saveMessage.message;
   }
 
-  if (localSaveMessage) {
-    formStorage = localSaveMessage;
+  if (saveMessage) {
+    formStorage = saveMessage;
   }
 }
